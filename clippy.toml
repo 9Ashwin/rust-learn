@@ -1,0 +1,17 @@
+# Clippy 定制规则
+# 完整列表: https://rust-lang.github.io/rust-clippy/
+
+# 认知复杂度阈值 (默认 25)
+cognitive-complexity-threshold = 30
+
+# 类型复杂度阈值 (默认 250)
+type-complexity-threshold = 250
+
+# 函数最大参数数量 (默认 7)
+too-many-arguments-threshold = 8
+
+# 结构体最大字段数 (默认 5)
+max-struct-fields = 10
+
+# 允许的 box 大小阈值 (字节)
+trivial-copy-size-limit = 128

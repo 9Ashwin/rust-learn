@@ -1,0 +1,8 @@
+# Rust 学习 Demo 配置文件
+# 本地覆盖请放入 config.local.toml (不提交 git)
+
+[server]
+addr = "127.0.0.1:3000"
+
+[database]
+url = "sqlite:data.db?mode=rwc"

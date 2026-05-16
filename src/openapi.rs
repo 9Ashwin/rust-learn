@@ -24,10 +24,11 @@ use crate::handlers;
             CreateUserRequest,
             UpdateUserRequest,
             Pagination,
-            ApiResponse<UserResponse>,
-            PaginatedData<UserResponse>,
-            ApiResponse<PaginatedData<UserResponse>>,
-            ApiResponse<()>,
+            // 用 alias 替代泛型，Swagger UI 可正确解析 $ref
+            UserApiResponse,
+            PaginatedUserApiResponse,
+            EmptyApiResponse,
+            PaginatedUserData,
         )
     ),
     tags(

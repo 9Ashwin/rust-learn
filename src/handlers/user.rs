@@ -20,7 +20,7 @@ use crate::services::user_service::UserService;
         ("page_size" = u64, Query, description = "每页数量，默认 10"),
     ),
     responses(
-        (status = 200, description = "分页用户列表", body = ApiResponse<PaginatedData<UserResponse>>),
+        (status = 200, description = "分页用户列表", body = PaginatedUserApiResponse),
     ),
     tag = "用户管理"
 )]
@@ -45,8 +45,8 @@ pub async fn list_users(
         ("id" = String, Path, description = "用户 ID"),
     ),
     responses(
-        (status = 200, description = "用户详情", body = ApiResponse<UserResponse>),
-        (status = 404, description = "用户不存在", body = ApiResponse<()>),
+        (status = 200, description = "用户详情", body = UserApiResponse),
+        (status = 404, description = "用户不存在", body = EmptyApiResponse),
     ),
     tag = "用户管理"
 )]
@@ -69,9 +69,9 @@ pub async fn get_user(
     path = "/api/users",
     request_body = CreateUserRequest,
     responses(
-        (status = 201, description = "创建成功", body = ApiResponse<UserResponse>),
-        (status = 400, description = "参数校验失败", body = ApiResponse<()>),
-        (status = 409, description = "邮箱已存在", body = ApiResponse<()>),
+        (status = 201, description = "创建成功", body = UserApiResponse),
+        (status = 400, description = "参数校验失败", body = EmptyApiResponse),
+        (status = 409, description = "邮箱已存在", body = EmptyApiResponse),
     ),
     tag = "用户管理"
 )]
@@ -97,8 +97,8 @@ pub async fn create_user(
     ),
     request_body = UpdateUserRequest,
     responses(
-        (status = 200, description = "更新成功", body = ApiResponse<UserResponse>),
-        (status = 404, description = "用户不存在", body = ApiResponse<()>),
+        (status = 200, description = "更新成功", body = UserApiResponse),
+        (status = 404, description = "用户不存在", body = EmptyApiResponse),
     ),
     tag = "用户管理"
 )]
@@ -125,7 +125,7 @@ pub async fn update_user(
     ),
     responses(
         (status = 204, description = "删除成功"),
-        (status = 404, description = "用户不存在", body = ApiResponse<()>),
+        (status = 404, description = "用户不存在", body = EmptyApiResponse),
     ),
     tag = "用户管理"
 )]
